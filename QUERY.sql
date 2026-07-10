@@ -125,3 +125,17 @@ SELECT match_id, fixture, base_ticket_price
 FROM Matches
 WHERE tournament_category = 'Champions League'
 AND match_status = 'Available';
+
+
+
+-- =========================================================
+-- QUERY 2
+-- Search users whose names start with Tanvir or contain Haque, case-insensitively
+-- =========================================================
+SELECT user_id, full_name, email
+FROM Users
+WHERE full_name ILIKE 'Tanvir%'
+OR full_name ILIKE '%Haque%';
+
+
+
