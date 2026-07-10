@@ -149,3 +149,16 @@ SELECT booking_id, user_id, match_id,
 FROM Bookings
 WHERE payment_status IS NULL;
 
+
+
+-- =========================================================
+-- QUERY 4
+-- Retrieve booking details with user name and match fixture
+-- =========================================================
+SELECT b.booking_id, u.full_name, m.fixture, b.total_cost
+FROM Bookings AS b
+INNER JOIN Users AS u ON b.user_id = u.user_id
+INNER JOIN Matches AS m ON b.match_id = m.match_id;
+
+
+
