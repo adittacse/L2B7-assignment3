@@ -172,3 +172,15 @@ LEFT JOIN Bookings AS b ON u.user_id = b.user_id;
 
 
 
+-- =========================================================
+-- QUERY 6
+-- Find bookings whose total cost is higher than the average booking cost
+-- =========================================================
+SELECT booking_id, match_id, total_cost
+FROM Bookings
+WHERE total_cost > (
+    SELECT AVG(total_cost) FROM Bookings
+);
+
+
+
