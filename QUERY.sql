@@ -143,7 +143,6 @@ OR full_name ILIKE '%Haque%';
 -- QUERY 3
 -- Find bookings with missing payment status and replace NULL with 'Action Required'
 -- =========================================================
-
 SELECT booking_id, user_id, match_id,
     COALESCE(payment_status, 'Action Required') AS systematic_status
 FROM Bookings
@@ -159,6 +158,17 @@ SELECT b.booking_id, u.full_name, m.fixture, b.total_cost
 FROM Bookings AS b
 INNER JOIN Users AS u ON b.user_id = u.user_id
 INNER JOIN Matches AS m ON b.match_id = m.match_id;
+
+
+
+-- =========================================================
+-- QUERY 5
+-- Display all users and their booking IDs,
+-- including users who have never made a booking
+-- =========================================================
+SELECT u.user_id, u.full_name, b.booking_id
+FROM Users AS u
+LEFT JOIN Bookings AS b ON u.user_id = b.user_id;
 
 
 
